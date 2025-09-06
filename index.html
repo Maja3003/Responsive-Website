@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Responsywny układ – tylko HTML + CSS</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="viewport">
+    <header class="topbar" aria-hidden="true"></header>
+
+    <main class="stage" role="img" aria-label="Układ demonstracyjny z figurami">
+      <!-- czerwone romby -->
+      <div class="diamond d1" aria-hidden="true"></div>
+      <div class="diamond d2" aria-hidden="true"></div>
+
+      <!-- dwie niebieskie kreski -->
+      <div class="lines" aria-hidden="true">
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+
+      <!-- koło -->
+      <div class="dot" aria-hidden="true"></div>
+
+      <!-- pionowy prostokąt z napisem ABC -->
+      <aside class="abc" aria-label="Panel ABC">
+        <span>ABC</span>
+      </aside>
+    </main>
+  </div>
+</body>
+</html>
