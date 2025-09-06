@@ -1,0 +1,208 @@
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  overflow: hidden;
+  background: #115f17;
+  font-family: system-ui, Arial, sans-serif;
+}
+
+:root {
+  --bar-h: 52px;
+  --stroke: 3px;
+}
+
+.viewport {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: var(--bar-h) 1fr;
+}
+
+.topbar {
+  background: #786f1e;
+  border-bottom: var(--stroke) solid black;
+}
+
+.stage {
+  position: relative;
+  background: #106d15;
+  border-top: var(--stroke) solid black;
+}
+
+.diamond {
+  position: absolute;
+  width: 14vmin;
+  height: 14vmin;
+  max-width: 100px;
+  max-height: 100px;
+  background: red;
+  border: var(--stroke) solid black;
+  transform: rotate(45deg);
+}
+
+.lines {
+  position: absolute;
+  display: grid;
+  gap: 4vmin;
+}
+.lines .line {
+  display: block;
+  width: 14vmin;
+  height: 2vmin;
+  max-width: 150px;
+  min-height: 10px;
+  max-height: 12px;
+  background: blue;
+  border: var(--stroke) solid black;
+}
+
+.dot {
+  position: absolute;
+  width: 15vmin;
+  height: 15vmin;
+  max-width: 60px;
+  max-height: 60px;
+  background: #2f9e9b;
+  border: var(--stroke) solid black;
+  border-radius: 50%;
+}
+
+.abc {
+  position: absolute;
+  width: 23vmin;
+  height: 60vmin;
+  max-width: 180px;
+  max-height: 420px;
+  border: var(--stroke) solid black;
+  display: grid;
+  place-items: start center;
+}
+.abc span {
+  margin-top: 10px;
+  font-weight: 700;
+  letter-spacing: .06em;
+}
+
+/* -------------------------
+   Widok 1: < 583px
+   ------------------------- */
+@media (max-width: 582px) {
+  .d1 { top: 23%; left: 13%; }
+  .d2 { top: 12%; left: 29%; }
+
+  .lines { left: 15%; top: 48%; }
+
+  .dot { left: 40%; top: 48%; }
+
+  .abc {
+    left: 35%;
+    transform: translateX(-50%);
+    top: 62%;
+    background: blue;
+    color: black;    
+  }
+}
+
+
+/* -------------------------
+   Widok 2: 583px – 900px
+   ------------------------- */
+@media (min-width: 583px) and (max-width: 900px) {
+  .d1 { top: 29%; left: 10%; }
+  .d2 { top: 18%; left: 25%; }
+
+  .lines { left: 11%; top: 60%; }
+
+  .dot { left: 35%; top: 60%; }
+
+  .abc {
+    right: 6%;
+    top: 22%;
+    background: #c54646;
+    color: #241010;
+  }
+}
+
+
+/* -------------------------
+   Widok 3: > 900px
+   ------------------------- */
+@media (min-width: 901px) {
+  .d1 { top: 20%; left: 20%; } 
+  .d2 { top: 36%; left: 10%; } 
+
+  .lines { left: 42%; top: 34%; } 
+  .dot   { left: 56%; top: 32%; } 
+
+  .abc {
+    right: 8%;
+    top: 16%;
+    background: #ffffff;
+    color: #151515;
+  }
+}
+
+/* Animacje */
+
+@keyframes pulseDiamond {
+  0%, 100% {
+    opacity: 1;
+    transform: rotate(45deg) scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: rotate(45deg) scale(1.1);
+  }
+}
+
+@keyframes rotateDot {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(15deg) scale(1.1);
+  }
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+@keyframes slideLines {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-6px);
+    opacity: 0.8;
+  }
+}
+
+@keyframes glowABC {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
+  }
+}
+
+
+.diamond {
+  animation: pulseDiamond 4s ease-in-out infinite;
+}
+
+.dot {
+  animation: rotateDot 6s ease-in-out infinite;
+}
+
+.lines .line {
+  animation: slideLines 3s ease-in-out infinite;
+}
+
+.abc {
+  animation: floatABC 5s ease-in-out infinite, glowABC 3s ease-in-out infinite;
+}
+
+
